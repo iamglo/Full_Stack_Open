@@ -1,0 +1,10 @@
+PUT http://localhost:3001/api/blogs/5eeceec3b06cbfd088548069
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1sdXVra2FpIiwiaWQiOiI1ZWVjY2VhNmY1YTgxNDI1MzgwZTZlOGYiLCJpYXQiOjE1OTI1ODQxNDZ9.NSIHSHPx_oA1WrBix8jLVSYOXIqPH9bRZsbBAU76WB8
+
+{
+    "title": "kmn",
+    "author": "lol",
+    "url": "",
+    "likes": 1
+}
