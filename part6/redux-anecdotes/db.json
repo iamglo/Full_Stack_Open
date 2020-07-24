@@ -1,0 +1,39 @@
+{
+  "anecdotes": [
+    {
+      "content": "fml",
+      "id": "14745",
+      "votes": 14
+    },
+    {
+      "content": "dwa",
+      "id": "32411",
+      "votes": 7
+    },
+    {
+      "content": "haha",
+      "id": "71074",
+      "votes": 7
+    },
+    {
+      "content": "kml",
+      "id": "26402",
+      "votes": 12
+    },
+    {
+      "content": "add",
+      "id": "45876",
+      "votes": 3
+    },
+    {
+      "content": "nwe",
+      "id": "1780",
+      "votes": 1
+    },
+    {
+      "content": "ads",
+      "id": "22427",
+      "votes": 1
+    }
+  ]
+}
