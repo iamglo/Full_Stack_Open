@@ -45,13 +45,7 @@ app.post('/api/persons', async (req,res, next) => {
   
   const body = req.body
   const data = await Person.find({}).then(p => p)
-
-  if (!body.name || !body.number || body.name === "" || body.number === ""){
-    res.status(400).json({ 
-      error: 'content missing' 
-    })
-  }
-
+  
   let person = new Person({
     name: body.name,
     number: body.number   
@@ -70,7 +64,7 @@ app.post('/api/persons', async (req,res, next) => {
       res.json(updatedPerson)
     })
     .catch(error => next(error))
-    
+
   } else {
     person.save().then(saved => {
       res.json(saved)
@@ -88,11 +82,26 @@ app.put('/api/persons/:id', (req, res, next) => {
   }
 
   Person.findByIdAndUpdate(req.params.id, person, {new:true})
-    .then(updatedP => {
-      response.json(updatedP)
+    .then(updated => updated.toJSON())
+    .then(updatedPerson => {
+      res.json(updatedPerson)
     })
     .catch(error => next(error))
 })
+
+const errorHandler = (error, request, response, next) => {
+  console.error(error.message)
+
+  if (error.name === 'CastError') {
+    return response.status(400).send({ error: 'malformatted id' })
+  } else if (error.name === 'ValidationError') {
+    return response.status(400).json({ error: error.message })
+  }
+
+  next(error)
+}
+
+app.use(errorHandler)
 
 const unknownEndpoint = (request, response) => {
   response.status(404).send({ error: 'unknown endpoint' })
