@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const config = require('../utils/config')
 
 const blogSchema = mongoose.Schema({
   title: {
@@ -10,16 +11,12 @@ const blogSchema = mongoose.Schema({
     type: String,
     required : true
   },
-  likes: Number
+  likes: Number,
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }
 })
 
-const mongoUrl = 'mongodb://localhost/bloglist'
-mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(result => {
-    console.log('connected to MongoDB')
-  })
-  .catch((error) => {
-    console.log('error connecting to MongoDB:', error.message)
-  })
 
 module.exports =  mongoose.model('Blog', blogSchema)
